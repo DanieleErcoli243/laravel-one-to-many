@@ -1,0 +1,16 @@
+.show-card {
+    border: 1px solid red;
+    box-shadow: 10px 10px 5px rgb(245, 107, 107);
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 20px;
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid red;
+        padding-top: 20px;
+
+    }
+
+}

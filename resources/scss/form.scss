@@ -1,0 +1,23 @@
+.form-row {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+
+    input {
+        padding: 5px;
+    }
+
+    textarea {
+        padding: 5px;
+
+    }
+
+    .sub-btn {
+        padding: 5px 10px;
+        border-radius: 10px;
+        width: 100px;
+        background-color: rgb(92, 229, 92);
+    }
+}

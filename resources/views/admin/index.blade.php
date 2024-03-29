@@ -9,6 +9,7 @@
     <thead>
         <tr>
             <th>Titolo</th>
+            <th>Tipo</th>
             <th>Descrizione</th>
             <th>Immagine</th>
             <th>
@@ -22,6 +23,7 @@
         @forelse($projects as $project)
         <tr>
             <td>{{ $project->title }}</td>
+            <td>{{ $project->type ? $project->type : '-' }}</td>
             <td>{{ $project->description }}</td>
             <td>{{ $project->image }}</td>
             <td class="action-btn">

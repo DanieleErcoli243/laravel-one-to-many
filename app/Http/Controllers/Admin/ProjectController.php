@@ -17,8 +17,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $types = Type::select('label', 'id')->get();
         $projects = Project::all();
-        return view('admin.index', compact('projects'));
+        return view('admin.index', compact('projects','types'));
     }
 
     /**
@@ -70,8 +71,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-      
-        return view('admin.edit', compact('project'));
+        $types = Type::select('label', 'id')->get();
+        return view('admin.edit', compact('project', 'types'));
     }
 
     /**

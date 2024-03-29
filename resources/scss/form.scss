@@ -5,8 +5,10 @@
     justify-content: flex-start;
     gap: 20px;
 
-    input {
+    input,
+    select {
         padding: 5px;
+        width: 50%;
     }
 
     textarea {

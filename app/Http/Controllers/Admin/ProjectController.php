@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Type;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,8 +26,9 @@ class ProjectController extends Controller
      */
     public function create()
     {   
+        $types = Type::select('label', 'id')->get();
         $project = new Project();
-        return view('admin.create', compact('project'));
+        return view('admin.create', compact('project', 'types'));
     }
 
     /**
@@ -34,7 +36,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-       
+      
         $data = $request->validate([
             'title'=>'unique:projects|string|required',
             'description'=> 'required|string',

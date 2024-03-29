@@ -15,11 +15,13 @@ class TypeSeeder extends Seeder
     {
         $labels = ['FrontEnd', 'BackEnd', 'UI/UX', 'FullStack'];
 
-        foreach ($labels as $label)
+        foreach ($labels as $label){
             $type = new Type();
 
             $type->label = $label;
 
             $type->save();
+
+        }
     }
 }

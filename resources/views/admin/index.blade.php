@@ -26,16 +26,18 @@
             <td>{{ $project->type ? $project->type : '-' }}</td>
             <td>{{ $project->description }}</td>
             <td>{{ $project->image }}</td>
-            <td class="action-btn">
-                <a href="{{ route('admin.projects.show', $project->id) }}"><i class="fas fa-eye"></i></a>
-                <a href="{{ route('admin.projects.edit', $project->id) }}"><i class="fas fa-pencil"></i></a>
-                <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="deleting-form">
-                    @csrf
-                    @method('DELETE')
-                    <button class="delete" type="submit">
-                        <i class="fas fa-trash-can"></i>
-                    </button>
-                </form>    
+            <td>
+                <div class="action-btn">
+                    <a href="{{ route('admin.projects.show', $project->id) }}"><i class="fas fa-eye"></i></a>
+                    <a href="{{ route('admin.projects.edit', $project->id) }}"><i class="fas fa-pencil"></i></a>
+                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="deleting-form">
+                        @csrf
+                        @method('DELETE')
+                        <button class="delete" type="submit">
+                            <i class="fas fa-trash-can"></i>
+                        </button>
+                    </form> 
+                </div>   
             </td>
             @empty
             <h1>Non ci sono progetti</h1>

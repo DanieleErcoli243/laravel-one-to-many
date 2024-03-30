@@ -37,11 +37,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-      
-        $data = $request->validate([
+         $data = $request->validate([
             'title'=>'unique:projects|string|required',
             'description'=> 'required|string',
             'image'=> 'nullable|image|mimes:png,jpg,jpeg',
+            'category_id'=> 'nullable|exists:types,id'
         ]);
 
         $project = new Project();
@@ -49,7 +49,8 @@ class ProjectController extends Controller
         $project->fill($data);
 
         if(Arr::exists($data, 'image')){
-           $img_url =  Storage::putFile('project_images', $data['image']);
+            $extension = $data['image']->extension();
+           $img_url =  Storage::putFile('project_images', $data['image'], "$project->title.$extension");
            $project->image = $img_url;
         }
 
@@ -84,10 +85,13 @@ class ProjectController extends Controller
             'title'=>[Rule::unique('projects')->ignore($project->id), 'string', 'required'],
             'description'=> 'required|string',
             'image'=> 'nullable|image|mimes:png,jpg,jpeg',
+            'category_id'=> 'nullable|exists:types,id'
         ]);
 
         if(Arr::exists($data, 'image')){
-            $img_url =  Storage::putFile('project_images', $data['image']);
+            $extension = $data['image']->extension();
+
+            $img_url =  Storage::putFile('project_images', $data['image'], "$project->title.$extension");
             $project->image = $img_url;
          }; 
 

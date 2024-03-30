@@ -9,14 +9,14 @@
 @endif   
     <div class="form-row">
         <label for="title">Inserisci titolo</label>
-        <input type="text" id="title" name="title" value="{{ old('title', $project->title)}}" >
+        <input type="text" id="title" name="title" value="{{ old('title', $project->title)}}">
         <label for="image"></label>
         <input type="file" id="image" name="image">
         <label for="type_id">Scegli il tipo</label>
         <select id="type_id" name="type_id">
             <option value="">Nessuno</option>
             @foreach($types as $type)
-            <option value="{{ $type->id }}">{{ $type->label }}</option>
+            <option value="{{ $type->id }}" @if (old('type_id', $project->type?->id) == $type->id) selected @endif>{{ $type->label }}</option>
             @endforeach
         </select>
         <label for="description">Inserisci una breve descrizione</label>

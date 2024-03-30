@@ -14,6 +14,7 @@
         </div>
         <div>
             <h3>{{ $project->title }}</h3>
+            <h4>Categoria: @if($project->type) {{ $project->type->label }} @else 'Nessuna' @endif</4>
             <p>{{ $project->description }}</p>
         </div>
         <div class="navigation">

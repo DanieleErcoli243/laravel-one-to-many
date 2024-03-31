@@ -8,6 +8,7 @@
     <table class="text-center"> 
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Etichetta</th>
                 <th>
                     <a href="{{ route('admin.types.create') }}">
@@ -19,6 +20,7 @@
         <tbody>
             @forelse($types as $type)
             <tr>
+                <td>{{ $type->id }}</td>
                 <td>{{ $type->label }}</td>
                 
                 

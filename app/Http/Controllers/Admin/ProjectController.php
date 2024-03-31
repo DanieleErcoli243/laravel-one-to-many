@@ -37,11 +37,13 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
+        
          $data = $request->validate([
             'title'=>'unique:projects|string|required',
             'description'=> 'required|string',
             'image'=> 'nullable|image|mimes:png,jpg,jpeg',
-            'category_id'=> 'nullable|exists:types,id'
+            'type_id'=> 'nullable|exists:types,id'
         ]);
 
         $project = new Project();
@@ -81,11 +83,13 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+
+        
         $data = $request->validate([
             'title'=>[Rule::unique('projects')->ignore($project->id), 'string', 'required'],
             'description'=> 'required|string',
             'image'=> 'nullable|image|mimes:png,jpg,jpeg',
-            'category_id'=> 'nullable|exists:types,id'
+            'type_id'=> 'nullable|exists:types,id'
         ]);
 
         if(Arr::exists($data, 'image')){

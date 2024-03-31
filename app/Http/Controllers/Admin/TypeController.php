@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        return view('admin.types.index', compact('types')); 
     }
 
     /**
@@ -20,7 +22,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -28,7 +30,17 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'label' => 'required|string|unique:types'
+        ]);
+
+        $type = new Type();
+
+        $type->fill($data);
+
+        $type->save();
+
+        return to_route('admin.types.index');
     }
 
     /**
@@ -36,7 +48,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        return view('admin.types.show', compact('type'));
     }
 
     /**
@@ -44,7 +56,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.tyeps.edit', compact('type'));
     }
 
     /**
@@ -52,7 +64,17 @@ class TypeController extends Controller
      */
     public function update(Request $request, Type $type)
     {
-        //
+        $data = $request->validate([
+            'label' => [Rule::unique('types')->ignore($type->id), 'string', 'required']
+        ]);
+
+        
+
+        $type->fill($data);
+
+        $type->save();
+
+        return to_route('admin.types.index');
     }
 
     /**
@@ -60,6 +82,8 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+
+        return to_route('admin.types.index');
     }
 }

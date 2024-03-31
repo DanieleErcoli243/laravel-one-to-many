@@ -9,6 +9,8 @@ use App\Model\Project;
 class Type extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['label'];
     
     public function projects()
     {

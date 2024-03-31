@@ -36,6 +36,14 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::put('/projects/{project}', [AdminProjectsController::class, 'update'])->name('projects.update');
     Route::delete('/projects/{project}', [AdminProjectsController::class, 'destroy'])->name('projects.destroy');
 
+    // rotte per i tipi
+    Route::get('/types', [AdminTypesController::class, 'index'])->name('types.index');
+    Route::get('/types/create', [AdminTypesController::class, 'create'])->name('types.create');
+    Route::post('/types', [AdminTypesController::class, 'store'])->name('types.store');
+    Route::get('/types/{type}/edit', [AdminTypesController::class, 'edit'])->name('types.edit');
+    Route::put('/types/{type}', [AdminTypesController::class, 'update'])->name('types.update');
+    Route::delete('/types/{type}', [AdminTypesController::class, 'destroy'])->name('types.destroy');
+
 });
 
 Route::middleware('auth')->group(function () {

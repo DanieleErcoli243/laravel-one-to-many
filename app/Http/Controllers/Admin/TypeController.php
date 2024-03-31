@@ -23,6 +23,7 @@ class TypeController extends Controller
      */
     public function create()
     {
+        
         return view('admin.types.create');
     }
 
@@ -57,6 +58,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
+        
         return view('admin.tyeps.edit', compact('type'));
     }
 
@@ -73,7 +75,7 @@ class TypeController extends Controller
 
         $type->fill($data);
 
-        $type->save();
+        $type->update();
 
         return to_route('admin.types.index');
     }

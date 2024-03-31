@@ -8,29 +8,26 @@
 <table class="text-center"> 
     <thead>
         <tr>
-            <th>Titolo</th>
-            <th>Tipo</th>
-            <th>Descrizione</th>
-            <th>Immagine</th>
-            <th>
-                <a href="{{ route('admin.projects.create') }}">
+            <th>Etichetta</th>
+            typetype<th>
+                <a href="{{ route('admin.types.create') }}">
                   <i class="fas fa-plus"></i>
                 </a>
             </th>
         </tr>
     </thead>
     <tbody>
-        @forelse($projects as $project)
+        @forelse($types as $type)
         <tr>
-            <td>{{ $project->title }}</td>
-            <td>{{ $project->type ? $project->type->label : '-' }}</td>
-            <td>{{ $project->description }}</td>
-            <td>{{ $project->image }}</td>
+            <td>{{ $type->label }}</td>
+            <td>{{ $type->created-at }}</td>
+            <td>{{ $type->updated_at }}</td>
+            
             <td>
                 <div class="action-btn">
-                    <a href="{{ route('admin.projects.show', $project->id) }}"><i class="fas fa-eye"></i></a>
-                    <a href="{{ route('admin.projects.edit', $project->id) }}"><i class="fas fa-pencil"></i></a>
-                    <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="deleting-form">
+                    <a href="{{ route('admin.types.show', $type->id) }}"><i class="fas fa-eye"></i></a>
+                    <a href="{{ route('admin.types.edit', $type->id) }}"><i class="fas fa-pencil"></i></a>
+                    <form action="{{ route('admin.types.destroy', $type->id) }}" method="POST" class="deleting-form">
                         @csrf
                         @method('DELETE')
                         <button class="delete" type="submit">
@@ -40,7 +37,7 @@
                 </div>   
             </td>
             @empty
-            <h1>Non ci sono progetti</h1>
+            <h1>Non ci sono tipi</h1>
             @endforelse
         </tr>
     </tbody>

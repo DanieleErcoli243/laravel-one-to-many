@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\TypeController as AdminTypesController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectsController;
 use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
@@ -41,8 +42,10 @@ Route::prefix('/admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('/types/create', [AdminTypesController::class, 'create'])->name('types.create');
     Route::post('/types', [AdminTypesController::class, 'store'])->name('types.store');
     Route::get('/types/{type}/edit', [AdminTypesController::class, 'edit'])->name('types.edit');
-    Route::put('/types/{type}', [AdminTypesController::class, 'update'])->name('types.update');
-    Route::delete('/types/{type}', [AdminTypesController::class, 'destroy'])->name('types.destroy');
+    Route::put('/types/{type}', [AdminTypeController::class, 'update'])->name('types.update');
+    Route::delete('/types/{type}', [AdminTypesController::class, 'destroy'])->name('types.destroy'); 
+
+    
 
 });
 

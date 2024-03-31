@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Validation\Rule;
 use App\Models\Type;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class TypeController extends Controller

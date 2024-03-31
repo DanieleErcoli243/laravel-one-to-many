@@ -20,12 +20,10 @@
         @forelse($types as $type)
         <tr>
             <td>{{ $type->label }}</td>
-            <td>{{ $type->created-at }}</td>
-            <td>{{ $type->updated_at }}</td>
+            
             
             <td>
                 <div class="action-btn">
-                    <a href="{{ route('admin.types.show', $type->id) }}"><i class="fas fa-eye"></i></a>
                     <a href="{{ route('admin.types.edit', $type->id) }}"><i class="fas fa-pencil"></i></a>
                     <form action="{{ route('admin.types.destroy', $type->id) }}" method="POST" class="deleting-form">
                         @csrf

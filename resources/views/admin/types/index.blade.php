@@ -4,43 +4,45 @@
 
 
 @section('content')
+<div class="flex">
+    <table class="text-center"> 
+        <thead>
+            <tr>
+                <th>Etichetta</th>
+                <th>
+                    <a href="{{ route('admin.types.create') }}">
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse($types as $type)
+            <tr>
+                <td>{{ $type->label }}</td>
+                
+                
+                <td>
+                    <div class="action-btn">
+                        <a href="{{ route('admin.types.edit', $type->id) }}"><i class="fas fa-pencil"></i></a>
+                        <form action="{{ route('admin.types.destroy', $type->id) }}" method="POST" class="deleting-form">
+                            @csrf
+                            @method('DELETE')
+                            <button class="delete" type="submit">
+                                <i class="fas fa-trash-can"></i>
+                            </button>
+                        </form> 
+                    </div>   
+                </td>
+                @empty
+                <h1>Non ci sono tipi</h1>
+                @endforelse
+            </tr>
+        </tbody>
+        
+    </table>
+</div>
 
-<table class="text-center"> 
-    <thead>
-        <tr>
-            <th>Etichetta</th>
-            typetype<th>
-                <a href="{{ route('admin.types.create') }}">
-                  <i class="fas fa-plus"></i>
-                </a>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @forelse($types as $type)
-        <tr>
-            <td>{{ $type->label }}</td>
-            
-            
-            <td>
-                <div class="action-btn">
-                    <a href="{{ route('admin.types.edit', $type->id) }}"><i class="fas fa-pencil"></i></a>
-                    <form action="{{ route('admin.types.destroy', $type->id) }}" method="POST" class="deleting-form">
-                        @csrf
-                        @method('DELETE')
-                        <button class="delete" type="submit">
-                            <i class="fas fa-trash-can"></i>
-                        </button>
-                    </form> 
-                </div>   
-            </td>
-            @empty
-            <h1>Non ci sono tipi</h1>
-            @endforelse
-        </tr>
-    </tbody>
-    
-</table>
 
 @endsection
 

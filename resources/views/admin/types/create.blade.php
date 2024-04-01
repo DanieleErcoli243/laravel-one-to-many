@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Crea tipo')
+@section('title', 'Crea Tipo')
 
 @section('content')
 
-
-
-<form action="{{ route('admin.types.store }}" method="POST">
-    @csrf
-    <label for="label">Inserisci etichetta</label>
-    <input type="text" id="label" name="label" value="{{ old('label', '') }}">
-</form>
+<div>
+    <form action="{{ route('admin.types.store') }}" method="POST">
+        @csrf
+        <div class="form-row">
+            <label for="label">Aggiungi Etichetta</label>
+            <input type="text" id="label" name="label" value="{{ old('label', '')}}">
+        </div>
+        <button type="submit">Invia</button>
+    </form>
+</div>
 
 @endsection

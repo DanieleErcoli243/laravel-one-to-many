@@ -1,15 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Modifica')
+@section('title', 'Crea Tipo')
 
 @section('content')
 
-
-<form action="{{ route('admin.types.update }}" method="post">
-@csrf
-@method('PUT')
-    <label for="label">Modifica etichetta</label>
-    <input type="text" id="label" name="label" placeholder="Etichetta" value="{{ old('label', $type->label) }}">
-</form>
+<div>
+    <form action="{{ route('admin.types.store') }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="form-row">
+            <label for="label">Aggiungi Etichetta</label>
+            <input type="text" id="label" name="label" value="{{ old('label', $type->label)}}">
+        </div>
+        <button type="submit">Invia</button>
+    </form>
+</div>
 
 @endsection
